@@ -1,0 +1,6 @@
+# Entropy maximizing treatment assignment using...
+# i) Bayesian Regression
+# ii) Gaussian Process Regression
+# Compare to baselines...
+# a) Known remaining subjects m, and randomly assign m/2 to treatment or control.
+# b) Unknown remaining subjects m, and Bernoulli assign each subsequent subject.

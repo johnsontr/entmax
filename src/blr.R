@@ -8,6 +8,8 @@
 # NOTE: For now, sigma0^2 is assumed to be known.
 ##
 
+library(mvtnorm)
+
 posterior.theta <- function(Y, D, sigma0=1, lambda=1){
   ###
   ###
@@ -44,7 +46,7 @@ posterior.theta <- function(Y, D, sigma0=1, lambda=1){
   rownames(Sigma_theta) <- c("Intercept","ATE")
   colnames(Sigma_theta) <- c("Intercept","ATE")
   
-  return(data.frame(mu = mu_theta, Sigma = Sigma_theta))
+  return(list("mu" = mu_theta, "Sigma" = Sigma_theta))
 }
 
 posterior.predictive.outcome <- function(Y, D, d, sigma0=1, lambda=1){
@@ -61,23 +63,27 @@ posterior.predictive.outcome <- function(Y, D, d, sigma0=1, lambda=1){
   #
   # Outputs:
   #     mu_n: the mean vector of the posterior distribution of the vector of linear regression coefficients (intercept, coefficient on D, sigma0 known)
-  #     Sigma_n : the variance-covariance matrix of the posterior distribution of the vector of linear regression coefficients (intercept, coefficient on D, sigma0 known)
+  #     Sigma_n: the variance-covariance matrix of the posterior distribution of the vector of linear regression coefficients (intercept, coefficient on D, sigma0 known)
+  #     y.density: the value dnorm takes for mu_n and Sigma_n
+  #
+  #     NOTE:
+  #     To report the density instead of mu_n and Sigma_n, set density=TRUE in the function options.
   ###
   ###
   
   post.theta <- posterior.theta(Y, D, sigma0, lambda) # Get mu_theta and Sigma_theta to use in equation 11
-  x <- c(1,d) # Add a 1 preceding the new observation d for the intercept.
   
   ###
   ### Equation 11
   # y | Y ~ MVN( x'mu_n , (sigma0)^2 + x'*Sigma_n*x )
   ###
-  mu_y <- as.numeric( c(1,d) %*% post.theta[,1] ) 
-  Sigma_y <- as.numeric( sigma0^2 + ( t(c(1,d)) %*% as.matrix(post.theta[,2:3]) %*% c(1,d) ) )
+  mu_y <- as.numeric( c(1,d) %*% as.vector(post.theta$mu) ) # Add a 1 preceding the new observation d for the intercept.
+  Sigma_y <- as.numeric( sigma0^2 + ( t(c(1,d)) %*% as.matrix(post.theta$Sigma) %*% c(1,d) ) ) 
   
-  return(data.frame(mu = mu_y, Sigma = Sigma_y))
+  return( list( "mu" = mu_y, "Sigma" = Sigma_y ) )
 }
 
+ppo.density <- function(y, ppo){return(dnorm(y, as.numeric(ppo[1]), as.numeric(ppo[2])))}
 
-
+# pt.density <- function(pt){return{dmvnorm()}}
 

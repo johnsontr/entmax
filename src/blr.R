@@ -65,9 +65,6 @@ posterior.predictive.outcome <- function(Y, D, d, sigma0=1, lambda=1){
   #     mu_n: the mean vector of the posterior distribution of the vector of linear regression coefficients (intercept, coefficient on D, sigma0 known)
   #     Sigma_n: the variance-covariance matrix of the posterior distribution of the vector of linear regression coefficients (intercept, coefficient on D, sigma0 known)
   #     y.density: the value dnorm takes for mu_n and Sigma_n
-  #
-  #     NOTE:
-  #     To report the density instead of mu_n and Sigma_n, set density=TRUE in the function options.
   ###
   ###
   
@@ -83,7 +80,63 @@ posterior.predictive.outcome <- function(Y, D, d, sigma0=1, lambda=1){
   return( list( "mu" = mu_y, "Sigma" = Sigma_y ) )
 }
 
-ppo.density <- function(y, ppo){return(dnorm(y, as.numeric(ppo[1]), as.numeric(ppo[2])))}
+ppo.density <- function(y, ppo){
+  ###
+  ###
+  # Function: return the density for y taking a certain value given the DGP.
+  #
+  # Inputs:
+  #     y: the value the new observation y takes
+  #     ppo: a posterior.predictive.outcome() object
+  #
+  # Output:
+  #     density: the density of the posterior predictive distribution of the outcome for y=y
+  ###
+  ###
+  return(dnorm(as.numeric(y), as.numeric(ppo[1]), as.numeric(ppo[2])))
+}
 
-# pt.density <- function(pt){return{dmvnorm()}}
+pt.density <- function(theta, pt){
+  ###
+  ###
+  # Function: return the density for a vector theta taking a certain value given the DGP
+  #
+  # Inputs:
+  #     y: the value the new observation y takes
+  #     ppo: a posterior.theta() object
+  #
+  # Output:
+  #     density: the density of the posterior predictive distribution of the outcome for y=y
+  ###
+  ###
+  return(dmvnorm(as.vector(theta), pt$mu, pt$Sigma))
+}
+
+posterior.theta.eval <- function(Y, D, theta, sigma0=1, lambda=1){
+  ###
+  ###
+  # Function: return the density for a given vector theta of the posterior distribution of the coefficients of the linear model.
+  #
+  # Inputs:
+  #     Y: an N-vector of outcomes
+  #     D: an N-vector of treatment assignments
+  #     theta: ; this needs to be of length dim(as.matrix(cbind(1,df$D)))[2]
+  #     sigma0: Prior for the standard deviation of the disturbance term in the linear model
+  #     lambda: Hyperprior for the standard deviation of the disturbance term in the linear model
+  #
+  # Output:
+  #     density: the density of the posterior distribution 
+  ###
+  ###
+  
+  theta <- as.matrix(theta)
+  X <- as.matrix(cbind(1,df$D)) # Add a column of 1s preceding the vector D for the intercept in the linear model.
+  Lambda <- lambda*diag(dim(X)[2]) # Hyperpriors
+  
+  ###
+  ### Equation 13
+  return(as.numeric(exp((-1/(2)*sigma0^2) * crossprod(Y - (X %*% theta)) - (1/2)*(t(theta) %*% Lambda %*% theta))))
+}
+
+
 

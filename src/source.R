@@ -7,8 +7,8 @@
 ###
 
 # Set the path to the .R function files.
-PATH_TO_SOURCES <- "C:/Users/thomas.johnson/Documents/GitHub/entmax/src/" # Windows Desktop
-#PATH_TO_SOURCES <- "C:/Users/Thomas Johnson/Dropbox/Ryan\'s Dropbox/QUICKDROP/" # Windows MacBook
+# PATH_TO_SOURCES <- "C:/Users/thomas.johnson/Documents/GitHub/entmax/src/" # Windows Desktop
+PATH_TO_SOURCES <- "C:/Users/Thomas Johnson/Documents/GitHub/entmax/src/" # Windows MacBook
 
 source(paste(PATH_TO_SOURCES, "dgen.R", sep="")) # Source files for data generating processes.
 source(paste(PATH_TO_SOURCES, "blr.R", sep="")) # Source files for Bayesian linear regression.

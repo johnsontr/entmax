@@ -6,7 +6,7 @@
 df <- dgen.rbinom()
 
 # Posterior distribution of the model parameters when Y = intercept + ATE*D + u
-posterior.theta(df$Y, df$D)
+post.theta <- posterior.theta(df$Y, df$D, sigma0=1, lambda=1)
 
 # Posterior predictive distribution for the binary outcome when d=0
 posterior.c <- posterior.predictive.outcome(df$Y, df$D,  d=0, sigma0=1, lambda=1)
@@ -30,3 +30,10 @@ ppo.density(y=0, posterior.t)
 
 # dnorm using the output from posterior.predictive.outcome when d=1 and y=1
 ppo.density(y=1, posterior.t)
+
+# Example 1
+pt.density(theta=c(0.278, 0.695), post.theta)
+
+# Example 2
+pt.density(theta=c(0, 0.5), post.theta)
+

@@ -139,4 +139,14 @@ posterior.theta.eval <- function(Y, D, theta, sigma0=1, lambda=1){
 }
 
 
+theta.map <- integrate 
+
+pi0 <- 
+
+
+
+
+
+
+
 

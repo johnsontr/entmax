@@ -40,15 +40,15 @@ dgenRbinom <- function(num.obs=50, p=0.3, q=0.9, seed=1){
   set.seed(seed)
 
   # Generate the num.obs x 1 vector of treatment assignment indicators.
-  D <- rbinom(num.obs, 1, 0.5) # Any exp. unit has a 50/50 chance of treatment.
+  D <- stats::rbinom(num.obs, 1, 0.5) # Any exp. unit has a 50/50 chance of treatment.
 
   # Generate outcomes associated with the treatment assignment indicators D.
   Y <- rep(NA, num.obs)
   for(i in 1:num.obs){
     if(D[i]==0){ # If the exp. unit was part of the control group, ...
-      Y[i] <- rbinom(1,1,p) # then Y = 1 with probability p.
+      Y[i] <- stats::rbinom(1,1,p) # then Y = 1 with probability p.
     } else { # If the exp. unit was part of the treatment group, ...
-      Y[i] <- rbinom(1,1,q) # then Y = 1 with probability q.
+      Y[i] <- stats::rbinom(1,1,q) # then Y = 1 with probability q.
     }
   }
 

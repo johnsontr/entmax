@@ -37,9 +37,9 @@ dgenSimpleLinear <- function(num.obs=50, intercept=2, treatment.effect=-4, seed=
   set.seed(seed)
 
   # Generate a vector of treatment assignment indicators.
-  D <- rbinom(num.obs, 1, 0.5) # Any exp. unit has a 50/50 chance of treatment.
+  D <- stats::rbinom(num.obs, 1, 0.5) # Any exp. unit has a 50/50 chance of treatment.
   # Generate a vector of mean-zero i.i.d. noise.
-  u <- rnorm(50,0,1)
+  u <- stats::rnorm(50,0,1)
   # Generate the outcome vector.
   Y <- intercept + treatment.effect*D + u
 

@@ -31,7 +31,7 @@ posterior.theta <- function(Y, D, sigma0=1, lambda=1){
   ###
   ###
 
-  X <- as.matrix(cbind(1,df$D)) # Add a column of 1s preceding the vector D for the intercept in the linear model.
+  X <- as.matrix(cbind(1,D)) # Add a column of 1s preceding the vector D for the intercept in the linear model.
   Lambda <- lambda*diag(dim(X)[2]) # Hyperpriors
 
   ###
@@ -41,7 +41,7 @@ posterior.theta <- function(Y, D, sigma0=1, lambda=1){
   ###
 
   # mu_theta = (X'X + (sigma0)^2 * Lambda)^{-1} * X'Y
-  mu_theta <- solve(crossprod(X, X) + ((sigma0^2)*Lambda)) %*% t(X) %*% df$Y
+  mu_theta <- solve(crossprod(X, X) + ((sigma0^2)*Lambda)) %*% t(X) %*% Y
   rownames(mu_theta) <- c("Intercept","ATE")
   colnames(mu_theta) <- c("Estimate")
 

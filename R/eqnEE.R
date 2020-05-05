@@ -32,7 +32,7 @@ posterior.theta.eval <- function(Y, D, theta, sigma0=1, lambda=1){
   ###
 
   theta <- as.matrix(theta)
-  X <- as.matrix(cbind(1,df$D)) # Add a column of 1s preceding the vector D for the intercept in the linear model.
+  X <- as.matrix(cbind(1,D)) # Add a column of 1s preceding the vector D for the intercept in the linear model.
   Lambda <- lambda*diag(dim(X)[2]) # Hyperpriors
 
   ###

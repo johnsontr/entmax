@@ -17,3 +17,7 @@ theta.hat <- post$mu # This is converted to a vector by my function calls.
 
 
 # Equation (25) and (26) are the logarithm of the posteriorTheta()
+
+
+#ALGORITHM
+

@@ -7,22 +7,22 @@
 posteriorTheta(Y, D, sigma0 = 1, lambda = 1)
 }
 \arguments{
-\item{Y}{Outcome variable}
+\item{Y}{an N-vector of outcomes}
 
-\item{D}{Treatment indicator variable}
+\item{D}{an N-vector of treatment assignments}
 
-\item{sigma0}{Variance common to all disturbances}
+\item{sigma0}{prior for the standard deviation of the disturbance term in the linear model}
 
-\item{lambda}{The prior on \code{sigma0}}
+\item{lambda}{hyperprior for the standard deviation of the disturbance term in the linear model (\code{sigma0})}
 }
 \value{
-Parameter estimates for the coefficients of the linear model.
+return the mean vector and the variance covariance matrix for the posterior distribution of the model parameters; mu_n: the mean vector of the posterior distribution of the vector of linear regression coefficients; Sigma_n : the variance-covariance matrix of the posterior distribution of the vector of linear regression coefficients
 }
 \description{
 Return the parameters of the posterior distribution of the coefficients of the linear model.
 Data \code{(Y, D)} must be provided; \code{sigma0} and \code{lambda} (the prior on \code{sigma0}) are assumed to be known.
 }
 \examples{
-df <- dgenRbinom()
+df <- dgenRbinom(num.obs=50, p=0.3, q=0.9, seed=1) # Simulate some data
 posteriorTheta(df$Y, df$D, sigma0=1, lambda=1)
 }

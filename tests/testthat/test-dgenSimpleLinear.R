@@ -1,7 +1,7 @@
 test_that("dgenSimpleLinear() generates a data frame with continuous outcome, binary treatment indicator, and num.obs total observations", {
 
   num <- 100
-  df <- dgenSimpleLinear(num.obs = num, p=0.3, q=0.9, seed=1)
+  df <- dgenSimpleLinear(num.obs = num, intercept=2, treatment.effect=-4, seed=1)
 
   # Make sure intercept, treatment effect, and seed are numeric inputs only.
 

@@ -7,12 +7,12 @@
 ptDensity(theta, pt)
 }
 \arguments{
-\item{theta}{A vector of model coefficients}
+\item{theta}{specific values for the model parameters; this needs to be of length \code{dim(as.matrix(cbind(1,D)))[2]}}
 
-\item{pt}{The posterior distribution of the model parameters.}
+\item{pt}{a \code{posteriorTheta()} object}
 }
 \value{
-The density of the posterior distribution of the model parameter estimates at the specific theta values.
+the density of the posterior distribution of the model parameter estimates at the specific theta values.
 }
 \description{
 Density of the posterior distribution of model parameters at a given value of those model parameters.

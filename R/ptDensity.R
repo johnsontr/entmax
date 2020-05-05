@@ -1,9 +1,9 @@
 #' Density of the posterior distribution of model parameters at a given value of those model parameters.
 #'
-#' @param theta A vector of model coefficients
-#' @param pt The posterior distribution of the model parameters.
+#' @param theta specific values for the model parameters; this needs to be of length \code{dim(as.matrix(cbind(1,D)))[2]}
+#' @param pt a \code{posteriorTheta()} object
 #'
-#' @return The density of the posterior distribution of the model parameter estimates at the specific theta values.
+#' @return the density of the posterior distribution of the model parameter estimates at the specific theta values.
 #' @export
 #'
 #' @examples
@@ -12,17 +12,5 @@
 #' thetaValues <- c(0.3,0.9)
 #' ptDensity(thetaValues, post)
 ptDensity <- function(theta, pt){
-  ###
-  ###
-  # Function: return the density for a vector theta taking a certain value given the DGP
-  #
-  # Inputs:
-  #     theta: the value the new observation y takes
-  #     pt: a posteriorTheta() object
-  #
-  # Output:
-  #     density: the density of the posterior distribution of the ATE for the outcome for model parameters theta
-  ###
-  ###
   return(mvtnorm::dmvnorm(as.vector(theta), pt$mu, pt$Sigma))
 }

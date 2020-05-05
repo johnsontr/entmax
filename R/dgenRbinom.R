@@ -1,40 +1,19 @@
 #' Data generating process for biased binary outcome under treatment.
 #'
-#' @param num.obs The number of observations.
-#' @param p The probability of the outcome being 1 when treated.
-#' @param q The probability of the outcome being 1 when treated.
-#' @param seed The seed for randomization.
+#' @param num.obs the number of observations to generate in the data set; defaults to 50 observations
+#' @param p The probability of the outcome being 1 when treated, \code{Pr( Y = 1 | D = 0 )} ; defaults to 0.3
+#' @param q The probability of the outcome being 1 when treated, \code{Pr( Y = 1 | D = 1 )} ; defaults to 0.9
+#' @param seed randomization seed; defaults to 1.
 #'
-#' @return A data frame of Y and D with \code{num.obs} total observations.
+#' @return a \code{(num.obs x 2)} data frame where column 1 is the binary dependent variable \code{Y} and column 2 is the treatment indicator \code{D}
 #' @export
 #'
 #' @examples
 #' dgenRbinom(num.obs=50, p=0.3, q=0.9, seed=1)
 dgenRbinom <- function(num.obs=50, p=0.3, q=0.9, seed=1){
-  ###
-  ###
-  # Function: a data generating process for a
-  #   i) zero intercept,
-  #   ii) binary outcome, and
-  #   iii) no covariate
-  # data generating process using rbinom().
-  #
-  # Input:
-  #     num.obs: the number of observations to generate in the data set; defaults to 50 observations.
-  #     p: Pr( Y = 1 | D = 0 ) ; defaults to 0.3
-  #     q: Pr( Y = 1 | D = 1 ) ; defaults to 0.9
-  #     seed: randomization seed; defaults to 1.
-  #
   #         NOTE: When num.obs = 50..........
   #         The seed=1 creates an unbalanced sample with 23 control observations and 27 treated observations.
   #         For a balanced sample when num.obs= 50, use seed=02134.
-  #
-  #         NOTE: Many data sets can be generated using apply and a vector of unique seeds.
-  #
-  # Output:
-  #     df: a (num.obs x 2) data frame where column 1 is Y and column 2 is D.
-  ###
-  ###
 
   # Set the seed.
   set.seed(seed)

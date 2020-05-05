@@ -7,16 +7,16 @@
 dgenRbinom(num.obs = 50, p = 0.3, q = 0.9, seed = 1)
 }
 \arguments{
-\item{num.obs}{The number of observations.}
+\item{num.obs}{the number of observations to generate in the data set; defaults to 50 observations}
 
-\item{p}{The probability of the outcome being 1 when treated.}
+\item{p}{The probability of the outcome being 1 when treated, \code{Pr( Y = 1 | D = 0 )} ; defaults to 0.3}
 
-\item{q}{The probability of the outcome being 1 when treated.}
+\item{q}{The probability of the outcome being 1 when treated, \code{Pr( Y = 1 | D = 1 )} ; defaults to 0.9}
 
-\item{seed}{The seed for randomization.}
+\item{seed}{randomization seed; defaults to 1.}
 }
 \value{
-A data frame of Y and D with \code{num.obs} total observations.
+a \code{(num.obs x 2)} data frame where column 1 is the binary dependent variable \code{Y} and column 2 is the treatment indicator \code{D}
 }
 \description{
 Data generating process for biased binary outcome under treatment.

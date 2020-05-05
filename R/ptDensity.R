@@ -18,7 +18,7 @@ ptDensity <- function(theta, pt){
   #
   # Inputs:
   #     theta: the value the new observation y takes
-  #     pt: a posterior.theta() object
+  #     pt: a posteriorTheta() object
   #
   # Output:
   #     density: the density of the posterior distribution of the ATE for the outcome for model parameters theta

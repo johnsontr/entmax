@@ -2,8 +2,8 @@
 
 export(dgenRbinom)
 export(dgenSimpleLinear)
-export(posterior.predictive.outcome)
-export(posterior.theta)
-export(posterior.theta.eval)
-export(ppo.density)
-export(pt.density)
+export(posteriorPredictiveOutcome)
+export(posteriorTheta)
+export(posteriorThetaEval)
+export(ppoDensity)
+export(ptDensity)

@@ -8,10 +8,10 @@
 #'
 #' @examples
 #' df <- dgenRbinom()
-#' post <- posterior.theta(df$Y, df$D, sigma0=1, lambda=1)
+#' post <- posteriorTheta(df$Y, df$D, sigma0=1, lambda=1)
 #' thetaValues <- c(0.3,0.9)
-#' pt.density(thetaValues, post)
-pt.density <- function(theta, pt){
+#' ptDensity(thetaValues, post)
+ptDensity <- function(theta, pt){
   ###
   ###
   # Function: return the density for a vector theta taking a certain value given the DGP

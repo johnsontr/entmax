@@ -1,7 +1,7 @@
 #' Posterior distribution of model parameters
 #'
 #' Return the parameters of the posterior distribution of the coefficients of the linear model.
-#' Data (Y, D) must be provided; sigma0 and lambda (the prior on sigma0) are assumed to be known.
+#' Data \code{(Y, D)} must be provided; \code{sigma0} and \code{lambda} (the prior on \code{sigma0}) are assumed to be known.
 #'
 #' @param Y Outcome variable
 #' @param D Treatment indicator variable
@@ -13,8 +13,8 @@
 #'
 #' @examples
 #' df <- dgenRbinom()
-#' posterior.theta(df$Y, df$D, sigma0=1, lambda=1)
-posterior.theta <- function(Y, D, sigma0=1, lambda=1){
+#' posteriorTheta(df$Y, df$D, sigma0=1, lambda=1)
+posteriorTheta <- function(Y, D, sigma0=1, lambda=1){
   ###
   ###
   # Function: return the parameters of the posterior distribution of the coefficients of the linear model.

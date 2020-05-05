@@ -12,8 +12,8 @@
 #' @examples
 #' df <- dgenRbinom()
 #' thetaValues <- c(0.3,.9)
-#' posterior.theta.eval(df$Y, df$D, thetaValues, sigma0=1, lambda=1)
-posterior.theta.eval <- function(Y, D, theta, sigma0=1, lambda=1){
+#' posteriorThetaEval(df$Y, df$D, thetaValues, sigma0=1, lambda=1)
+posteriorThetaEval <- function(Y, D, theta, sigma0=1, lambda=1){
   ###
   ### NOTE: I think that this is eqnDD with fewer steps. Try to make posterior.predictive.outcome.eval()?
   ###

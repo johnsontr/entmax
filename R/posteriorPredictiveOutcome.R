@@ -1,7 +1,7 @@
 #' Posterior predictive distribution of the outcome
 #'
 #' Return the parameters of the posterior distribution of the coefficients of the linear model.
-#' Data (Y, D) and potential input d must be provided; sigma0 and lambda (the prior on sigma0)
+#' Data \code{(Y, D)} and potential input d must be provided; \code{sigma0} and \code{lambda} (the prior on \code{sigma0})
 #' are assumed to be known.
 #'
 #' @param Y Outcome variable
@@ -15,9 +15,9 @@
 #'
 #' @examples
 #' df <- dgenRbinom()
-#' posterior.predictive.outcome(df$Y, df$D,  d=0, sigma0=1, lambda=1)
-#' posterior.predictive.outcome(df$Y, df$D,  d=1, sigma0=1, lambda=1)
-posterior.predictive.outcome <- function(Y, D, d, sigma0=1, lambda=1){
+#' posteriorPredictiveOutcome(df$Y, df$D,  d=0, sigma0=1, lambda=1)
+#' posteriorPredictiveOutcome(df$Y, df$D,  d=1, sigma0=1, lambda=1)
+posteriorPredictiveOutcome <- function(Y, D, d, sigma0=1, lambda=1){
   ###
   ###
   # Function: return the parameters of the posterior distribution of the coefficients of the linear model.
@@ -36,7 +36,7 @@ posterior.predictive.outcome <- function(Y, D, d, sigma0=1, lambda=1){
   ###
   ###
 
-  post.theta <- posterior.theta(Y, D, sigma0, lambda) # Get mu_theta and Sigma_theta to use in equation 11
+  post.theta <- posteriorTheta(Y, D, sigma0, lambda) # Get mu_theta and Sigma_theta to use in equation 11
 
   ###
   ### Equation 11

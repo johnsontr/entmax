@@ -1,0 +1,19 @@
+Package: entmax
+Imports:
+    mvtnorm
+Title: Entropty maximizing treatment assignment for sequential experiment designs
+Version: 0.0.0.9000
+Authors@R: 
+    person(given = "T. Ryan",
+           family = "Johnson",
+           role = c("aut", "cre"),
+           email = "thomas.johnson@wustl.edu",
+           comment = c(ORCID = "0000-0001-8452-5688"))
+Description: Implements an precision maximizing algorithm for estimateing the average treatment effective in sequential experimental design. At each iteration of an experiment, the researcher has an estimate for the ATE. When the next experimental unit arrives, a biased coin is flipped to determined whether the new experimental unit is assigned to the treatment group or the control group. The bias in the coin is determined by the expected Kullback-Leibler divergence and favors a treatment group designation when it is expected to provide the relatively more precision when the estimate of the ATE is updated with the yet-to-be-observed outcome.
+URL: https://github.com/johnsontr/entmax
+BugReports: https://github.com/johnsontr/entmax/issues
+License: MIT + file LICENSE
+Encoding: UTF-8
+LazyData: true
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.1.0

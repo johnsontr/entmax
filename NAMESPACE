@@ -2,10 +2,8 @@
 
 export(dgenRbinom)
 export(dgenSimpleLinear)
+export(posteriorPredictiveDensity)
 export(posteriorPredictiveMAP)
 export(posteriorTauDensity)
 export(posteriorThetaDensity)
 export(posteriorThetaMAP)
-export(ppDensity)
-export(ptDensity)
-export(ptauDensity)

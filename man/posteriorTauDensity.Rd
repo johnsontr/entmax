@@ -4,18 +4,12 @@
 \alias{posteriorTauDensity}
 \title{Density of the posterior distribution of model parameters when the intercept is fixed at its MAP value and the treatment effect is given}
 \usage{
-posteriorTauDensity(Y, D, tau.value, sigma0 = 1, lambda = 1)
+posteriorTauDensity(tau, ptmap)
 }
 \arguments{
-\item{Y}{an N-vector of outcomes}
+\item{tau}{a specific value for the treatment effect parameter}
 
-\item{D}{an N-vector of treatment assignments}
-
-\item{tau.value}{a specific value for the treatment effect parameter}
-
-\item{sigma0}{prior for the standard deviation of the disturbance term in the linear model}
-
-\item{lambda}{hyperprior for the standard deviation of the disturbance term in the linear model (\code{sigma0})}
+\item{ptmap}{a \code{posteriorTheta()} object}
 }
 \value{
 of the posterior distribution of model parameters when the intercept is fixed at its MAP value and the treatment effect is given
@@ -25,7 +19,7 @@ Density of the posterior distribution of model parameters when the intercept is 
 }
 \examples{
 df <- dgenRbinom()
-post <- posteriorThetaMAP(df$Y, df$D, sigma0=1, lambda=1)
+postThetaMAP <- posteriorThetaMAP(df$Y, df$D, sigma0=1, lambda=1)
 tau <- 0.1
-posteriorTauDensity(tau, post)
+posteriorTauDensity(tau, postThetaMAP)
 }

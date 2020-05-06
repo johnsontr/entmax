@@ -18,7 +18,7 @@ posteriorPredictiveDensity <- function( y, ppmap ){
   # The theoretical solution to the specified problem is distributed
   # multivariate normal with mean ppmap$mu and variance ppmap$Sigma, where
   # ppmap is a posteriorPredictiveMAP() object.
-  return( stats::dnorm( y, ppmap[1], ppmap[2] ) )
+  return( stats::dnorm( y, as.numeric(ppmap[1]), as.numeric(ppmap[2]) ) )
 }
 
 

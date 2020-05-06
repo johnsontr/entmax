@@ -32,7 +32,7 @@ posteriorThetaMAP <- function(Y, D, sigma0=1, lambda=1){
   colnames(Sigma_theta) <- c("Intercept","ATE")
 
   # Return estimates for the model parameters and their standard errors as a list.
-  return(list("mu" = mu_theta, "Sigma" = Sigma_theta))
+  return( list("mu" = mu_theta, "Sigma" = Sigma_theta) )
 }
 
 

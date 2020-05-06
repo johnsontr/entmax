@@ -1,7 +1,7 @@
-#' Density of the posterior distribution of model parameters at a given value of those model parameters.
+#' Density of the posterior distribution of model parameters at a given value of those model parameters
 #'
 #' @param theta specific values for the model parameters; this needs to be of length \code{dim(as.matrix(cbind(1,D)))[2]}
-#' @param pt a \code{posteriorThetaMAP()} object
+#' @param ptmap a \code{posteriorThetaMAP()} object
 #'
 #' @return the density of the posterior distribution of the model parameter estimates at the specific theta values.
 #' @export
@@ -15,5 +15,6 @@ posteriorThetaDensity <- function(theta, ptmap){
   # The theoretical solution to the specified problem is distributed
   # multivariate normal with mean ptmap$mu and vcov matrix ptmap$Sigma, where
   # ptmap is a posteriorThetaMAP() object.
-  return(mvtnorm::dmvnorm(as.vector(theta), ptmap$mu, ptmap$Sigma))
+
+  return( mvtnorm::dmvnorm( as.vector(theta), ptmap$mu, ptmap$Sigma) )
 }

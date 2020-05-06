@@ -2,29 +2,24 @@
 % Please edit documentation in R/posteriorThetaDensity.R
 \name{posteriorThetaDensity}
 \alias{posteriorThetaDensity}
-\title{Density of the posterior distribution of the model parameter estimates at the specified values}
+\title{Density of the posterior distribution of model parameters at a given value of those model parameters}
 \usage{
-posteriorThetaDensity(Y, D, theta, sigma0 = 1, lambda = 1)
+posteriorThetaDensity(theta, ptmap)
 }
 \arguments{
-\item{Y}{an N-vector of outcomes}
-
-\item{D}{an N-vector of treatment assignments}
-
 \item{theta}{specific values for the model parameters; this needs to be of length \code{dim(as.matrix(cbind(1,D)))[2]}}
 
-\item{sigma0}{prior for the standard deviation of the disturbance term in the linear model}
-
-\item{lambda}{hyperprior for the standard deviation of the disturbance term in the linear model (\code{sigma0})}
+\item{ptmap}{a \code{posteriorThetaMAP()} object}
 }
 \value{
-the density of the posterior distribution of the model parameter estimates at the specified values theta
+the density of the posterior distribution of the model parameter estimates at the specific theta values.
 }
 \description{
-Density of the posterior distribution of the model parameter estimates at the specified values
+Density of the posterior distribution of model parameters at a given value of those model parameters
 }
 \examples{
-df <- dgenRbinom(num.obs=50, p=0.3, q=0.9, seed=1) # Simulate some data
-thetaValues <- c(0.3,.9) # Specify the model parameters (an intercept and a treatment effect)
-posteriorThetaDensity(df$Y, df$D, thetaValues, sigma0=1, lambda=1)
+df <- dgenRbinom()
+postThetaMAP <- posteriorThetaMAP(df$Y, df$D, sigma0=1, lambda=1)
+theta <- c(0.3,0.9)
+posteriorThetaDensity(theta, postThetaMAP)
 }

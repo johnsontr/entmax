@@ -1,7 +1,7 @@
 #' Density of the posterior distribution of model parameters when the intercept is fixed at its MAP value and the treatment effect is given
 #'
-#' @param tau.value a specific value for the treatment effect parameter
-#' @param pt a \code{posteriorTheta()} object
+#' @param tau a specific value for the treatment effect parameter
+#' @param ptmap a \code{posteriorTheta()} object
 #'
 #' @return of the posterior distribution of model parameters when the intercept is fixed at its MAP value and the treatment effect is given
 #' @export

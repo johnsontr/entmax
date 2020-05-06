@@ -1,4 +1,4 @@
-test_that("posteriorTheta() takes in data and returns Bayesian linear regression estimates for model parameters", {
+test_that("posteriorThetaMAP() takes in data and returns Bayesian linear regression estimates for model parameters", {
 
   df <- dgenRbinom(num.obs=50, p=0.3, q=0.9, seed=1)
 

@@ -20,15 +20,16 @@
 #' df <- dgenRbinom(num.obs=50, p=0.3, q=0.9, seed=1) # Simulate some data
 #' posteriorPredictiveMAP(df$Y, df$D,  d=0, sigma0=1, lambda=1)
 #' posteriorPredictiveMAP(df$Y, df$D,  d=1, sigma0=1, lambda=1)
-posteriorPredictiveMAP <- function(Y, D, d, sigma0=1, lambda=1){
+posteriorPredictiveMAP <- function( Y, D, d, sigma0=1, lambda=1 ){
 
   # Get the maximum a posteriori (MAP) estimate of the model parameters
-  thetaMAP <- posteriorThetaMAP(Y, D, sigma0, lambda)
+  thetaMAP <- posteriorThetaMAP( Y, D, sigma0, lambda)
+  newData <- c(1,d)
 
-  ### Equation 11 in main.tex: posterior predictive distribution of the outcome variable given the data and a 
+  ### Equation 11 in main.tex: posterior predictive distribution of the outcome variable given the data
   # y | Y ~ MVN( x'mu_n , (sigma0)^2 + x'*Sigma_n*x )
-  mu_y <- as.numeric( c(1,d) %*% as.vector(thetaMAP$mu) ) # Add a 1 preceding the new observation d for the intercept.
-  Sigma_y <- as.numeric( sigma0^2 + ( t(c(1,d)) %*% as.matrix(thetaMAP$Sigma) %*% c(1,d) ) ) # Sigma is *NOT* the standard deviation when Sigma isn't a matrix -- it is the variance.
+  mu_y <- as.numeric( newData %*% as.vector(thetaMAP$mu) ) # Add a 1 preceding the new observation d for the intercept.
+  Sigma_y <- as.numeric( sigma0^2 + ( t(newData) %*% as.matrix(thetaMAP$Sigma) %*% newData ) ) # Sigma is *NOT* the standard deviation when Sigma isn't a matrix -- it is the variance.
   
   # Return the estimate for the predicted outcome and the estimate's standard error as a list object.
   return( list( "mu" = mu_y, "Sigma" = Sigma_y ) )

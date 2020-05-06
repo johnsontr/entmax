@@ -14,6 +14,6 @@
 ptDensity <- function(theta, pt){
   # The theoretical solution to the specified problem is distributed
   # multivariate normal with mean pt$mu and vcov matrix Sigma, where
-  # pt is a posteriorTheta() object (which is a list consisting of mu and Sigma)
+  # pt is a posteriorTheta() object (w9hich is a list consisting of mu and Sigma)
   return(mvtnorm::dmvnorm(as.vector(theta), pt$mu, pt$Sigma))
 }

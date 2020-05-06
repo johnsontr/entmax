@@ -13,8 +13,8 @@
 #'
 #' @examples
 #' df <- dgenRbinom(num.obs=50, p=0.3, q=0.9, seed=1) # Simulate some data
-#' posteriorTheta(df$Y, df$D, sigma0=1, lambda=1)
-posteriorTheta <- function(Y, D, sigma0=1, lambda=1){
+#' posteriorThetaMAP(df$Y, df$D, sigma0=1, lambda=1)
+posteriorThetaMAP <- function(Y, D, sigma0=1, lambda=1){
 
   X <- as.matrix(cbind(1,D)) # Add a column of 1s preceding the vector D for the intercept in the linear model.
   Lambda <- lambda*diag(dim(X)[2]) # Hyperpriors

@@ -1,7 +1,11 @@
 #' Density of the posterior distribution of model parameters when the intercept is fixed at its MAP value and the treatment effect is given
 #'
+#'
+#' @param Y an N-vector of outcomes
+#' @param D an N-vector of treatment assignments
 #' @param tau.value a specific value for the treatment effect parameter
-#' @param pt a \code{posteriorTheta()} object
+#' @param sigma0 prior for the standard deviation of the disturbance term in the linear model
+#' @param lambda hyperprior for the standard deviation of the disturbance term in the linear model (\code{sigma0})
 #'
 #' @return of the posterior distribution of model parameters when the intercept is fixed at its MAP value and the treatment effect is given
 #' @export
@@ -18,7 +22,7 @@ posteriorTauDensity <- function(Y, D, tau.value, sigma0=1, lambda=1){
 
 	# Fix the intercept at its MAP when calculating the density of a given value of tau
 	pt <- posteriorTheta(Y, D, sigma0=sigma0, lambda=lambda)
-	theta <- as.matrix(c(pt$mu[1], tau.value))
+	theta <- as.matrix(c(as.numeric(pt$mu[1]), tau.value))
  	X <- as.matrix(cbind(1,D)) # Add a column of 1s preceding the vector D for the intercept in the linear model.
  	Lambda <- lambda*diag(dim(X)[2]) # Hyperpriors
   	

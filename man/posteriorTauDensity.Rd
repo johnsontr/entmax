@@ -25,7 +25,7 @@ Density of the posterior distribution of model parameters when the intercept is 
 }
 \examples{
 df <- dgenRbinom()
-post <- posteriorTheta(df$Y, df$D, sigma0=1, lambda=1)
+post <- posteriorThetaMAP(df$Y, df$D, sigma0=1, lambda=1)
 tau <- 0.1
 posteriorTauDensity(tau, post)
 }

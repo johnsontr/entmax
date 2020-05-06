@@ -8,7 +8,7 @@
 #'
 #' @examples
 #' df <- dgenRbinom()
-#' post <- posteriorTheta(df$Y, df$D, sigma0=1, lambda=1)
+#' post <- posteriorThetaMAP(df$Y, df$D, sigma0=1, lambda=1)
 #' thetaValues <- c(0.3,0.9)
 #' ptDensity(thetaValues, post)
 ptDensity <- function(theta, pt){

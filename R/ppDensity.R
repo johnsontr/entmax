@@ -12,7 +12,7 @@
 #'
 #' @examples
 #' df <- dgenRbinom()
-#' postPred <- posteriorPredictive(df$Y, df$D,  d=0, sigma0=1, lambda=1)
+#' postPred <- posteriorPredictiveMAP(df$Y, df$D,  d=0, sigma0=1, lambda=1)
 #' ppDensity(y=1, postPred)
 ppDensity <- function(y, pp){
   # The theoretical solution to the specified problem is distributed

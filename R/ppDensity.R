@@ -15,6 +15,9 @@
 #' postPred <- posteriorPredictive(df$Y, df$D,  d=0, sigma0=1, lambda=1)
 #' ppDensity(y=1, postPred)
 ppDensity <- function(y, pp){
+  # The theoretical solution to the specified problem is distributed
+  # multivariate normal with mean pt$mu and vcov matrix Sigma, where
+  # pt is a posteriorTheta() object (which is a list consisting of mu and Sigma)
   return(stats::dnorm(as.numeric(y), as.numeric(pp[1]), as.numeric(pp[2])))
 }
 

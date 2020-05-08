@@ -8,11 +8,11 @@ test_that("dgenSimpleLinear() generates a data frame with continuous outcome, bi
   num <- 100
   df <- dgenSimpleLinear(num.obs = num, intercept=2, treatment.effect=-4, seed=1)
   Yflag <- TRUE
-  for(i in 1:num.obs){
+  for(i in 1:num){
   	if(is.numeric(df$Y[i]) == FALSE){Yflag <- FALSE}
   }
   Dflag <- TRUE
-  for(i in 1:num.obs){
+  for(i in 1:num){
   	if((df$D[i] != 0) && (df$D[i] != 1)){Dflag <- FALSE}
   }
 

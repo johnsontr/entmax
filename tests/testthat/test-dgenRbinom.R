@@ -8,11 +8,11 @@ test_that("dgenRbinom() generates a data frame with binary outcome, binary treat
   num <- 100
   df <- dgenRbinom(num.obs = num, p=0.3, q=0.9, seed=1)
   Yflag <- TRUE
-  for(i in 1:num.obs){
+  for(i in 1:num){
   	if((df$Y[i] != 0) && (df$Y[i] != 1)){Yflag <- FALSE}
   }
   Dflag <- TRUE
-  for(i in 1:num.obs){
+  for(i in 1:num){
   	if((df$D[i] != 0) && (df$D[i] != 1)){Dflag <- FALSE}
   }
 
